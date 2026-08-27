@@ -115,7 +115,6 @@ function Home({ user, saveUser, showMessage }) {
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            placeholder="Örn: Kral123"
             style={{ padding: '16px', fontSize: '1.1rem', background: 'rgba(15, 23, 42, 0.8)', border: '1px solid rgba(255,255,255,0.1)', color: 'white', borderRadius: '12px' }}
           />
         </div>
