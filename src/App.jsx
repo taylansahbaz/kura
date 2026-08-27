@@ -35,7 +35,7 @@ function App() {
       <div className="container">
         <Routes>
           <Route path="/" element={<Home user={user} saveUser={saveUser} showMessage={showMessage} />} />
-          <Route path="/room/:roomId" element={<Room user={user} showMessage={showMessage} />} />
+          <Route path="/room/:roomId" element={<Room user={user} saveUser={saveUser} showMessage={showMessage} />} />
           <Route path="/select-target/:roomId" element={<SelectTarget user={user} showMessage={showMessage} />} />
           <Route path="/manual-draw/:roomId" element={<ManualDraw user={user} showMessage={showMessage} />} />
           <Route path="/random-draw/:roomId" element={<RandomDraw user={user} showMessage={showMessage} />} />
