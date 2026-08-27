@@ -14,7 +14,7 @@ function Results({ user }) {
     const unsubscribe = onSnapshot(collection(db, "rooms", roomId, "predictions"), (snapshot) => {
       const fetched = [];
       snapshot.forEach(doc => {
-        fetched.push({ username: doc.id, ...doc.data() });
+        fetched.push({ id: doc.id, ...doc.data() });
       });
       setPredictions(fetched);
     }, (error) => {
@@ -58,13 +58,13 @@ function Results({ user }) {
         )}
 
         {predictions.map((pred, index) => {
-          const isExpanded = expandedUser === pred.username;
+          const isExpanded = expandedUser === pred.id;
           const isMe = pred.username === user?.username;
           const targetTeam = pred.targetTeam;
           
           return (
             <div 
-              key={pred.username}
+              key={pred.id}
               style={{ 
                 background: isMe ? 'rgba(15, 23, 42, 0.95)' : 'rgba(30, 41, 59, 0.95)',
                 border: isMe ? '2px solid rgba(56, 189, 248, 0.5)' : '1px solid rgba(255,255,255,0.1)',
@@ -76,7 +76,7 @@ function Results({ user }) {
             >
               {/* User Header - Clickable */}
               <div 
-                onClick={() => setExpandedUser(isExpanded ? null : pred.username)}
+                onClick={() => setExpandedUser(isExpanded ? null : pred.id)}
                 style={{ 
                   padding: '20px 24px', 
                   display: 'flex', 

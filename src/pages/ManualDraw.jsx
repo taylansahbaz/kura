@@ -75,13 +75,14 @@ function ManualDraw({ user, showMessage }) {
     const username = user?.username || 'Bilinmeyen';
 
     const prediction = {
+      username,
       targetTeam,
       opponents: allSelections,
       createdAt: serverTimestamp()
     };
     
     try {
-      await setDoc(doc(db, "rooms", roomId, "predictions", username), prediction);
+      await setDoc(doc(db, "rooms", roomId, "predictions", `${username}_${targetTeam.id}`), prediction);
       navigate(`/results/${roomId}`);
     } catch (error) {
       console.error(error);

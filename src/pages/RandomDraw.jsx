@@ -100,7 +100,8 @@ function RandomDraw({ user, showMessage }) {
   const handleSave = async () => {
     const username = user?.username || 'Bilinmeyen';
     try {
-      await setDoc(doc(db, "rooms", roomId, "predictions", username), {
+      await setDoc(doc(db, "rooms", roomId, "predictions", `${username}_${targetTeam.id}`), {
+        username,
         targetTeam,
         opponents: results,
         type: 'random',
