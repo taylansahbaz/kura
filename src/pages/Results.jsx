@@ -14,7 +14,12 @@ function Results({ user }) {
     const unsubscribe = onSnapshot(collection(db, "rooms", roomId, "predictions"), (snapshot) => {
       const fetched = [];
       snapshot.forEach(doc => {
-        fetched.push({ id: doc.id, ...doc.data() });
+        const data = doc.data();
+        fetched.push({ 
+          id: doc.id, 
+          username: data.username || doc.id.split('_')[0],
+          ...data 
+        });
       });
       setPredictions(fetched);
     }, (error) => {
