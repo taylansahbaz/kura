@@ -76,46 +76,75 @@ function SelectTarget({ user, showMessage }) {
     <div style={{ display: 'flex', flexDirection: 'column', width: '100%', height: '100vh' }}>
       
       {/* Top Bar */}
-      <div style={{ padding: '20px 30px', display: 'flex', alignItems: 'center' }}>
+      <div style={{ padding: '20px', position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <button 
           onClick={() => navigate(-1)} 
-          style={{ background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', padding: '10px 20px', borderRadius: '8px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px' }}
+          style={{ position: 'absolute', left: '20px', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', padding: '10px 15px', borderRadius: '8px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', zIndex: 10 }}
         >
-          <span>&#8592;</span> GERİ
+          <span>&#8592;</span> <span className="hide-on-mobile">GERİ</span>
         </button>
-        <div style={{ flex: 1, textAlign: 'center', paddingRight: '80px' }}>
-          <h2 style={{ letterSpacing: '2px', color: '#cbd5e1', fontSize: '1.1rem', textTransform: 'uppercase' }}>KİME KURA ÇEKMEK İSTİYORSUN?</h2>
+        <div style={{ textAlign: 'center', padding: '0 40px' }}>
+          <h2 style={{ letterSpacing: '2px', color: '#cbd5e1', fontSize: '1.1rem', textTransform: 'uppercase', margin: 0 }}>KİME KURA ÇEKMEK İSTİYORSUN?</h2>
         </div>
       </div>
 
       {/* Main Content */}
       <div style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '0 20px' }}>
         
-        {/* Left Arrow */}
-        <button 
-          onClick={handlePrev}
-          style={{ 
-            background: 'rgba(255,255,255,0.05)', 
-            border: '1px solid rgba(255,255,255,0.15)', 
-            width: '50px', height: '50px', 
-            borderRadius: '50%', 
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            cursor: 'pointer', fontSize: '1.5rem', color: '#94a3b8',
-            marginRight: '30px', flexShrink: 0
-          }}
-        >
-          ◀
-        </button>
-
         {/* PES Card */}
-        <div style={{ 
-          width: '420px', 
+        <div className="pes-card" style={{ 
           background: 'rgba(20, 20, 20, 0.9)', 
           border: '1px solid #333', 
           boxShadow: '0 20px 50px rgba(0,0,0,0.8)',
           borderRadius: '12px',
-          overflow: 'hidden'
+          overflow: 'hidden',
+          position: 'relative'
         }}>
+          
+          {/* Left Arrow (Overlay) */}
+          <button 
+            onClick={handlePrev}
+            style={{ 
+              position: 'absolute',
+              top: '50%',
+              left: 0,
+              transform: 'translateY(-50%)',
+              background: 'rgba(0, 0, 0, 0.6)', 
+              backdropFilter: 'blur(8px)',
+              border: '1px solid rgba(255,255,255,0.1)', 
+              borderLeft: 'none',
+              width: '40px', height: '70px', 
+              borderRadius: '0 12px 12px 0', 
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              cursor: 'pointer', fontSize: '1.2rem', color: '#f8fafc',
+              zIndex: 10
+            }}
+          >
+            ◀
+          </button>
+
+          {/* Right Arrow (Overlay) */}
+          <button 
+            onClick={handleNext}
+            style={{ 
+              position: 'absolute',
+              top: '50%',
+              right: 0,
+              transform: 'translateY(-50%)',
+              background: 'rgba(0, 0, 0, 0.6)', 
+              backdropFilter: 'blur(8px)',
+              border: '1px solid rgba(255,255,255,0.1)', 
+              borderRight: 'none',
+              width: '40px', height: '70px', 
+              borderRadius: '12px 0 0 12px', 
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              cursor: 'pointer', fontSize: '1.2rem', color: '#f8fafc',
+              zIndex: 10
+            }}
+          >
+            ▶
+          </button>
+
           {/* Header */}
           <div style={{ background: '#111', padding: '12px 20px', borderBottom: '2px solid #222', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <span style={{ color: '#fff', fontWeight: 'bold', letterSpacing: '1px', fontSize: '0.9rem' }}>HOME</span>
@@ -141,26 +170,10 @@ function SelectTarget({ user, showMessage }) {
           </div>
         </div>
 
-        {/* Right Arrow */}
-        <button 
-          onClick={handleNext}
-          style={{ 
-            background: 'rgba(255,255,255,0.05)', 
-            border: '1px solid rgba(255,255,255,0.15)', 
-            width: '50px', height: '50px', 
-            borderRadius: '50%', 
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            cursor: 'pointer', fontSize: '1.5rem', color: '#94a3b8',
-            marginLeft: '30px', flexShrink: 0
-          }}
-        >
-          ▶
-        </button>
-
       </div>
 
       {/* Action Buttons */}
-      <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', padding: '20px' }}>
+      <div className="action-buttons" style={{ display: 'flex', justifyContent: 'center', gap: '20px', padding: '20px' }}>
         <button onClick={handleRandomDraw} style={{ background: '#334155', borderRadius: '30px', padding: '12px 30px', border: '1px solid #475569' }}>
           🎲 RASTGELE
         </button>
@@ -173,7 +186,8 @@ function SelectTarget({ user, showMessage }) {
       <div 
         ref={carouselRef}
         style={{ 
-          background: 'rgba(0,0,0,0.8)', 
+          background: 'rgba(255,255,255,0.05)', 
+          backdropFilter: 'blur(10px)',
           padding: '15px 0', 
           display: 'flex', 
           overflowX: 'auto', 

@@ -131,7 +131,7 @@ function Home({ user, saveUser, showMessage }) {
             <div style={{ flex: 1, height: '1px', background: 'linear-gradient(to left, transparent, rgba(255,255,255,0.2))' }}></div>
           </div>
 
-          <div style={{ display: 'flex', gap: '12px' }}>
+          <div className="input-group" style={{ display: 'flex', gap: '12px' }}>
             <input
               type="text"
               value={roomCode}

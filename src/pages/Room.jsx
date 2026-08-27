@@ -128,7 +128,7 @@ function Room({ user, saveUser, showMessage }) {
         </div>
 
         {/* Copy Link Section */}
-        <div style={{ marginBottom: '30px', background: '#0f172a', padding: '16px', borderRadius: '12px', display: 'flex', alignItems: 'center', gap: '12px' }}>
+        <div className="copy-link-container" style={{ marginBottom: '30px', background: '#0f172a', padding: '16px', borderRadius: '12px', display: 'flex', alignItems: 'center', gap: '12px' }}>
           <div style={{ flex: 1, background: 'rgba(255,255,255,0.05)', padding: '12px 16px', borderRadius: '8px', color: '#94a3b8', fontSize: '0.9rem', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', border: '1px solid rgba(255,255,255,0.1)' }}>
             {window.location.origin}/room/{roomId}
           </div>

@@ -133,7 +133,7 @@ function Results({ user }) {
                   animation: 'slideDown 0.3s ease'
                 }}>
                   <p style={{ color: '#94a3b8', fontSize: '0.85rem', margin: '16px 0 12px', letterSpacing: '1px' }}>SEÇİLEN RAKİPLER:</p>
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '12px' }}>
+                  <div className="results-opponents-grid" style={{ display: 'grid', gap: '12px' }}>
                     {(pred.opponents || []).map((opp, i) => (
                       <div key={opp.id || i} style={{ 
                         background: 'rgba(15, 23, 42, 0.6)', 

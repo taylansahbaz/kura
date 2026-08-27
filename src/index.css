@@ -382,3 +382,68 @@ tbody tr:hover {
   font-size: 0.9rem;
   font-weight: 600;
 }
+/* MOBIL UYUMLULUK (RESPONSIVE) SINIFLARI */
+@media (max-width: 768px) {
+  .box {
+    padding: 24px 16px !important;
+  }
+  
+  .pes-card {
+    width: 100% !important;
+    max-width: 420px !important;
+  }
+
+  .action-buttons {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+
+  .results-opponents-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .input-group {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  
+  .input-group > * {
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  /* Room kopyalama alani icin */
+  .copy-link-container {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  
+  .copy-link-container button {
+    width: 100% !important;
+  }
+
+  h1 {
+    font-size: 1.5rem !important;
+  }
+
+  h2 {
+    font-size: 1.3rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .results-opponents-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Desktop varsayilan grid */
+.results-opponents-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 768px) {
+  .hide-on-mobile {
+    display: none !important;
+  }
+}
